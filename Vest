@@ -1,0 +1,7 @@
+library(rvest)
+web <-  'https://www.asx.com.au/prices/upcoming.htm'
+wb <- read_html(web)
+ot <- wb %>% html_nodes('tr td') %>% html_text()
+ot_m <- matrix(ot,26,3, byrow = TRUE)
+ot_df <- as.data.frame(ot_m)
+ot_df
